@@ -1,0 +1,6 @@
+@SwiftShop.Catalog_HostAddress = http://localhost:5124
+
+GET {{SwiftShop.Catalog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
