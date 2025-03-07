@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MongoDB.Bson" Version="3.2.1" />
     <PackageReference Include="MongoDB.Driver" Version="3.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
@@ -14,9 +15,9 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Dtos\ProductImageDtos\" />
-    <Folder Include="Dtos\ProductDetailDtos\" />
-    <Folder Include="Dtos\ProductDtos\" />
+    <Folder Include="Services\ProductImageServices\" />
+    <Folder Include="Services\ProductDetailServices\" />
+    <Folder Include="Services\ProductServices\" />
   </ItemGroup>
 
 </Project>
