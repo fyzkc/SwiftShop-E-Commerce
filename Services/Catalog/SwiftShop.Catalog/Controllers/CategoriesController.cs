@@ -33,21 +33,21 @@ namespace SwiftShop.Catalog.Controllers
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
             await _categoryService.CreateCategoryAsync(createCategoryDto);
-            return Ok("Category added succesfully");
+            return Ok("Category added successfully");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
             await _categoryService.UpdateCategoryAsync(updateCategoryDto);
-            return Ok("Category updated succesfully");
+            return Ok("Category updated successfully");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteCategory(string categoryId)
         {
             await _categoryService.DeleteCategoryAsync(categoryId);
-            return Ok("Category deleted succesfully");
+            return Ok("Category deleted successfully");
         }
     }
 }

@@ -35,21 +35,21 @@ namespace SwiftShop.Catalog.Controllers
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
             await _productService.CreateProductAsync(createProductDto);
-            return Ok("Product added succesfully");
+            return Ok("Product added successfully");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
             await _productService.UpdateProductAsync(updateProductDto);
-            return Ok("Product updated succesfully");
+            return Ok("Product updated successfully");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(string productId)
         {
             await _productService.DeleteProductAsync(productId);
-            return Ok("Product deleted succesfully");
+            return Ok("Product deleted successfully");
         }
     }
 }
