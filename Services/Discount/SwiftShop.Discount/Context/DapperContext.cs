@@ -5,7 +5,7 @@ using System.Data;
 
 namespace SwiftShop.Discount.Context
 {
-    public class DapperContext // This class is for making database processes with Dapper
+    public class DapperContext // This class is for making data processes with Dapper
     {
         private readonly IConfiguration _configuration;
         private readonly string _connectionString;
