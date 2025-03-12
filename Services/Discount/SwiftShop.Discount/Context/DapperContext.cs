@@ -5,7 +5,7 @@ using System.Data;
 
 namespace SwiftShop.Discount.Context
 {
-    public class DapperContext : DbContext
+    public class DapperContext // This class is for making database processes with Dapper
     {
         private readonly IConfiguration _configuration;
         private readonly string _connectionString;
@@ -14,14 +14,7 @@ namespace SwiftShop.Discount.Context
         {
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("DefaultConnection");
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-ES8AIES\\SQLEXPRESS;Initial Catalog=SwiftShopDiscountDb;TrustServerCertificate=True; Integrated Security=True;");
-        }
-
-        public DbSet<Coupon> Coupons { get; set; }
+        }       
         public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
     }
 }
