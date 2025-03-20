@@ -57,7 +57,7 @@ namespace SwiftShop.Discount.Services
             parameters.Add("@couponId", couponId);
             using(var connection = _dapperContext.CreateConnection())
             {
-                var value = await connection.QueryFirstOrDefaultAsync<ResultCouponDto>(selectByIdQuery); //QueryFirstOrDefaultAsync<T> is using for Select queries which are returning only one row. 
+                var value = await connection.QueryFirstOrDefaultAsync<ResultCouponDto>(selectByIdQuery, parameters); //QueryFirstOrDefaultAsync<T> is using for Select queries which are returning only one row. 
                 //it returns a T type object. If there is no result, than it returns null.
                 return value;
             }
