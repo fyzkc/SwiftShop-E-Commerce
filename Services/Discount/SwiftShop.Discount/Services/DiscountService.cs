@@ -8,7 +8,7 @@ namespace SwiftShop.Discount.Services
     {
         private readonly DapperContext _dapperContext;
 
-        public DiscountService(DapperContext dapperContext)
+        public DiscountService(DapperContext dapperContext) //for using dapper
         {
             _dapperContext = dapperContext;
         }
@@ -23,7 +23,8 @@ namespace SwiftShop.Discount.Services
             parameters.Add("@validDate", createdCoupon.ValidDate);
             using(var connection = _dapperContext.CreateConnection())
             {
-                await connection.ExecuteAsync(insertQuery, parameters);
+                await connection.ExecuteAsync(insertQuery, parameters); //ExecuteAsync is using for methods that changes the data such as Insert, Delete, Update
+                //after it run it returns the affected rows. 
             }
         }
 
@@ -43,7 +44,8 @@ namespace SwiftShop.Discount.Services
             string selectAllQuery = "Select * From Coupons";
             using(var connection = _dapperContext.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultCouponDto>(selectAllQuery);
+                var values = await connection.QueryAsync<ResultCouponDto>(selectAllQuery); //QueryAsync<T> is using for Select queries which are returning more than one rows. 
+                //it returns an IEnumerable type list. 
                 return values.ToList();
             }
         }
@@ -55,7 +57,8 @@ namespace SwiftShop.Discount.Services
             parameters.Add("@couponId", couponId);
             using(var connection = _dapperContext.CreateConnection())
             {
-                var value = await connection.QueryFirstOrDefaultAsync<ResultCouponDto>(selectByIdQuery);
+                var value = await connection.QueryFirstOrDefaultAsync<ResultCouponDto>(selectByIdQuery); //QueryFirstOrDefaultAsync<T> is using for Select queries which are returning only one row. 
+                //it returns a T type object. If there is no result, than it returns null.
                 return value;
             }
         }
