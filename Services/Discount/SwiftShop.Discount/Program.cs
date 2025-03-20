@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SwiftShop.Discount.Context;
+using SwiftShop.Discount.Services;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddTransient<DapperContext>();
+builder.Services.AddTransient<IDiscountService, DiscountService>();
 
 var app = builder.Build();
 
