@@ -14,6 +14,6 @@ namespace SwiftShop.Order.Application.Interfaces
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(int id);
-        Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter);
+        Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter); //this line is using for filtering with Entity Framework.
     }
 }
