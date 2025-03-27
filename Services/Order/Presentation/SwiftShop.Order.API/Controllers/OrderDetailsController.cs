@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SwiftShop.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
-using SwiftShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
-using SwiftShop.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
 
 namespace SwiftShop.Order.API.Controllers
 {

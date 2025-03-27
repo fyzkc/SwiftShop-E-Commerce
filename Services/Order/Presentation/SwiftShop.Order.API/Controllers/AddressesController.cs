@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SwiftShop.Order.Application.Features.CQRS.Commands.AddressCommands;
-using SwiftShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
-using SwiftShop.Order.Application.Features.CQRS.Queries.AddressQueries;
 
 namespace SwiftShop.Order.API.Controllers
 {

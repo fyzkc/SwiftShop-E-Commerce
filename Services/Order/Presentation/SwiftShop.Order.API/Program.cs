@@ -1,7 +1,4 @@
 using SwiftShop.Order.Application.Configurations;
-using SwiftShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
-using SwiftShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
-using SwiftShop.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
 using SwiftShop.Order.Application.Interfaces;
 using SwiftShop.Order.Persistence.Repositories;
 
@@ -9,17 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddScoped<GetAddressByIdQueryHandler>();
-builder.Services.AddScoped<GetAddressQueryHandler>();
-builder.Services.AddScoped<CreateAddressCommandHandler>();
-builder.Services.AddScoped<UpdateAddressCommandHandler>();
-builder.Services.AddScoped<RemoveAddressCommandHandler>();
-
-builder.Services.AddScoped<GetOrderDetailByIdQuery>();
-builder.Services.AddScoped<GetOrderDetailQueryHandler>();
-builder.Services.AddScoped<CreateOrderDetailCommandHandler>();
-builder.Services.AddScoped<UpdateOrderDetailCommandHandler>();
-builder.Services.AddScoped<RemoveOrderDetailCommandHandler>();
 
 
 builder.Services.AddControllers();

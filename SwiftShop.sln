@@ -21,13 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{CC9DDAA2-9697-4686-9EF9-17BE61EFEBF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Order.Domain", "Services\Order\Core\SwiftShop.Order.Domain\SwiftShop.Order.Domain.csproj", "{1EB2F312-8158-4162-808A-2609F033692C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Order.Domain", "Services\Order\Core\SwiftShop.Order.Domain\SwiftShop.Order.Domain.csproj", "{1EB2F312-8158-4162-808A-2609F033692C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Order.Application", "Services\Order\Core\SwiftShop.Order.Application\SwiftShop.Order.Application.csproj", "{4C767F00-70C0-4EA6-91F3-9DDC82F3D5B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Order.Application", "Services\Order\Core\SwiftShop.Order.Application\SwiftShop.Order.Application.csproj", "{4C767F00-70C0-4EA6-91F3-9DDC82F3D5B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Order.Persistence", "Services\Order\Infrastructure\SwiftShop.Order.Persistence\SwiftShop.Order.Persistence.csproj", "{0BF40186-084A-4EF4-8470-4DA09FC2494A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Order.Persistence", "Services\Order\Infrastructure\SwiftShop.Order.Persistence\SwiftShop.Order.Persistence.csproj", "{0BF40186-084A-4EF4-8470-4DA09FC2494A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Order.API", "Services\Order\Presentation\SwiftShop.Order.API\SwiftShop.Order.API.csproj", "{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Order.API", "Services\Order\Presentation\SwiftShop.Order.API\SwiftShop.Order.API.csproj", "{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
