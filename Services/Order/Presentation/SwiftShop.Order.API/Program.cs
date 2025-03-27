@@ -2,7 +2,8 @@ using SwiftShop.Order.Application.Configurations;
 using SwiftShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using SwiftShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using SwiftShop.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
-using SwiftShop.Order.Persistence.InfrastructureConfigurations;
+using SwiftShop.Order.Application.Interfaces;
+using SwiftShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices(); //we add the AddApplicationServices method from the ServiceRegistration class. 
-builder.Services.AddInfrastructureServices();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
