@@ -11,11 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\SwiftShop.Order.Application\SwiftShop.Order.Application.csproj" />
+    <ProjectReference Include="..\..\Core\SwiftShop.Order.Domain\SwiftShop.Order.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\SwiftShop.Order.Persistence\SwiftShop.Order.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
