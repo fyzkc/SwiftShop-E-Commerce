@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SwiftShop.Order.Application.Features.Commands.AddressCommands;
+using SwiftShop.Order.Application.Features.Queries.AddressQueries;
 
 namespace SwiftShop.Order.API.Controllers
 {
@@ -7,53 +10,45 @@ namespace SwiftShop.Order.API.Controllers
     [ApiController]
     public class AddressesController : ControllerBase
     {
-        private readonly GetAddressQueryHandler _getAddressQueryHandler;
-        private readonly GetAddressByIdQueryHandler _getAddressByIdQueryHandler;
-        private readonly CreateAddressCommandHandler _createAddressCommandHandler;
-        private readonly RemoveAddressCommandHandler _removeAddressCommandHandler;
-        private readonly UpdateAddressCommandHandler _updateAddressCommandHandler;
+        private readonly IMediator _mediator;
 
-        public AddressesController(GetAddressQueryHandler getAddressQueryHandler, GetAddressByIdQueryHandler getAddressByIdQueryHandler, CreateAddressCommandHandler createAddressCommandHandler, RemoveAddressCommandHandler removeAddressCommandHandler, UpdateAddressCommandHandler updateAddressCommandHandler)
+        public AddressesController(IMediator mediator)
         {
-            _getAddressQueryHandler = getAddressQueryHandler;
-            _getAddressByIdQueryHandler = getAddressByIdQueryHandler;
-            _createAddressCommandHandler = createAddressCommandHandler;
-            _removeAddressCommandHandler = removeAddressCommandHandler;
-            _updateAddressCommandHandler = updateAddressCommandHandler;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAddresses()
+        public async Task<IActionResult> GetAllAddresses()
         {
-            var adresses = await _getAddressQueryHandler.Handle();
-            return Ok(adresses);
+            var addresses = await _mediator.Send(new GetAddressQuery());
+            return Ok(addresses);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAddressById(int id)
         {
-            var address = await _getAddressByIdQueryHandler.Handle(new GetAddressByIdQuery(id));
+            var address = await _mediator.Send(new GetAddressByIdQuery(id));
             return Ok(address);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateAddress(CreateAddressCommand createAddressCommand)
         {
-            await _createAddressCommandHandler.Handle(createAddressCommand);
+            await _mediator.Send(createAddressCommand);
             return Ok("Address created successfully");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateAddress(UpdateAddressCommand updateAddressCommand)
         {
-            await _updateAddressCommandHandler.Handle(updateAddressCommand);
+            await _mediator.Send(updateAddressCommand);
             return Ok("Address updated successfully");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteAddress(int id)
         {
-            await _removeAddressCommandHandler.Handle(new RemoveAddressCommand(id));
+            await _mediator.Send(new RemoveAddressCommand(id));
             return Ok("Address deleted successfully");
         }
     }

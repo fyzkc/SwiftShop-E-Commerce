@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SwiftShop.Order.Application.Features.Commands.OrderDetailCommands;
+using SwiftShop.Order.Application.Features.Queries.OrderDetailQueries;
 
 namespace SwiftShop.Order.API.Controllers
 {
@@ -7,53 +10,45 @@ namespace SwiftShop.Order.API.Controllers
     [ApiController]
     public class OrderDetailsController : ControllerBase
     {
-        private readonly CreateOrderDetailCommandHandler _createOrderDetailCommandHandler;
-        private readonly GetOrderDetailByIdQueryHandler _getOrderDetailByIdQueryHandler;
-        private readonly GetOrderDetailQueryHandler _getOrderDetailQueryHandler;
-        private readonly RemoveOrderDetailCommandHandler _removeOrderDetailCommandHandler;
-        private readonly UpdateOrderDetailCommandHandler _updateOrderDetailCommandHandler;
+        private readonly IMediator _mediator;
 
-        public OrderDetailsController(CreateOrderDetailCommandHandler createOrderDetailCommandHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler, GetOrderDetailQueryHandler getOrderDetailQueryHandler, RemoveOrderDetailCommandHandler removeOrderDetailCommandHandler, UpdateOrderDetailCommandHandler updateOrderDetailCommandHandler)
+        public OrderDetailsController(IMediator mediator)
         {
-            _createOrderDetailCommandHandler = createOrderDetailCommandHandler;
-            _getOrderDetailByIdQueryHandler = getOrderDetailByIdQueryHandler;
-            _getOrderDetailQueryHandler = getOrderDetailQueryHandler;
-            _removeOrderDetailCommandHandler = removeOrderDetailCommandHandler;
-            _updateOrderDetailCommandHandler = updateOrderDetailCommandHandler;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetOrderDetails()
+        public async Task<IActionResult> GetAllOrderDetails()
         {
-            var orderDetails = await _getOrderDetailQueryHandler.Handle();
+            var orderDetails = await _mediator.Send(new GetOrderDetailQuery());
             return Ok(orderDetails);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetailById(int id)
         {
-            var orderDetail = await _getOrderDetailByIdQueryHandler.Handle(new GetOrderDetailByIdQuery(id));
+            var orderDetail = await _mediator.Send(new GetOrderDetailByIdQuery(id));
             return Ok(orderDetail);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateOrderDetail(CreateOrderDetailCommand createOrderDetailCommand)
         {
-            await _createOrderDetailCommandHandler.Handle(createOrderDetailCommand);
+            await _mediator.Send(createOrderDetailCommand);
             return Ok("Order detail created successfully");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateOrderDetail(UpdateOrderDetailCommand updateOrderDetailCommand)
         {
-            await _updateOrderDetailCommandHandler.Handle(updateOrderDetailCommand);
+            await _mediator.Send(updateOrderDetailCommand);
             return Ok("Order detail updated successfully");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteOrderDetail(int id)
         {
-            await _removeOrderDetailCommandHandler.Handle(new RemoveOrderDetailCommand(id));
+            await _mediator.Send(new RemoveOrderDetailCommand(id));
             return Ok("Order detail deleted successfully");
         }
     }
