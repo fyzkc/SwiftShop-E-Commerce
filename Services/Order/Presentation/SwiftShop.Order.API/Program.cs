@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplicationServices(); //we add the AddApplicationServices method from the ServiceRegistration class. 
+builder.Services.AddApplicationServices(builder.Configuration); //we add the AddApplicationServices method from the ServiceRegistration class. 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,10 @@ namespace SwiftShop.Order.Application.Configurations
     //otherwise we should add all the services one by one to the Program.cs. But with this class, we can add our services into here and only add the 
     //AddApplicationServices method into the Program.cs.
     {
-        public static void AddApplicationServices(this IServiceCollection serviceCollection)
+        public static void AddApplicationServices(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddAutoMapper(Assembly.GetExecutingAssembly());
+            serviceCollection.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
     }
 }
