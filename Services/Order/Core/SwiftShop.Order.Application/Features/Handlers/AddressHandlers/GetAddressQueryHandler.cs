@@ -16,6 +16,11 @@ namespace SwiftShop.Order.Application.Features.Handlers.AddressHandlers
     {
         private readonly IRepository<Address> _addressRepository;
         private readonly IMapper _mapper;
+        public GetAddressQueryHandler(IRepository<Address> addressRepository, IMapper mapper)
+        {
+            _addressRepository = addressRepository;
+            _mapper = mapper;
+        }
         public async Task<List<GetAddressQueryResult>> Handle(GetAddressQuery request, CancellationToken cancellationToken)
         {
             var addresses = await _addressRepository.GetAllAsync();
