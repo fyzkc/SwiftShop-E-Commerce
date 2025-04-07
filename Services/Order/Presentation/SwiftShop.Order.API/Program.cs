@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using SwiftShop.Order.Application.Configurations;
 using SwiftShop.Order.Application.Interfaces;
+using SwiftShop.Order.Persistence.Context;
 using SwiftShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices(builder.Configuration); //we add the AddApplicationServices method from the ServiceRegistration class. 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+//this code sends the options parameter to the OrderContext class's constructor method. 
+//OrderContext is adding into the DI Container. 
+builder.Services.AddDbContext<OrderContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("OrderDbConnection")));
 
 var app = builder.Build();
 
