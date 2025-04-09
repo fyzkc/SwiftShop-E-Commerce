@@ -29,6 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Order.Persistence
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Order.API", "Services\Order\Presentation\SwiftShop.Order.API\SwiftShop.Order.API.csproj", "{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{D0E8BC36-3489-45FC-A914-11F5EC5D7667}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.IdentityServer", "IdentityServer\SwiftShop.IdentityServer\SwiftShop.IdentityServer.csproj", "{D606CDE9-EB34-4DD8-B1B7-81550A8BA48F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,10 @@ Global
 		{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D606CDE9-EB34-4DD8-B1B7-81550A8BA48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D606CDE9-EB34-4DD8-B1B7-81550A8BA48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D606CDE9-EB34-4DD8-B1B7-81550A8BA48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D606CDE9-EB34-4DD8-B1B7-81550A8BA48F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +84,7 @@ Global
 		{4C767F00-70C0-4EA6-91F3-9DDC82F3D5B9} = {7C60BAC4-F3CE-45F7-9EBC-CF8BB2FB7217}
 		{0BF40186-084A-4EF4-8470-4DA09FC2494A} = {84E29AB5-FB7E-40A9-B7B2-0D9C518C57CD}
 		{345DF3A2-3BA3-4C90-BC07-F7CA2EA68A37} = {CC9DDAA2-9697-4686-9EF9-17BE61EFEBF8}
+		{D606CDE9-EB34-4DD8-B1B7-81550A8BA48F} = {D0E8BC36-3489-45FC-A914-11F5EC5D7667}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {929BF761-350B-4EEB-A32A-B9B362C04766}
