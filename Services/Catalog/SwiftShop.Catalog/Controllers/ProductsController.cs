@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Catalog.Dtos.CategoryDtos;
 using SwiftShop.Catalog.Dtos.ProductDtos;
@@ -17,6 +18,7 @@ namespace SwiftShop.Catalog.Controllers
             _productService = productService;
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
@@ -24,6 +26,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(allProducts);
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProductById(string productId)
         {
@@ -31,6 +34,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(product);
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
@@ -38,6 +42,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Product added successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
@@ -45,6 +50,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Product updated successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(string productId)
         {

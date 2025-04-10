@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Catalog.Dtos.CategoryDtos;
 using SwiftShop.Catalog.Services.CategoryServices;
@@ -15,6 +16,7 @@ namespace SwiftShop.Catalog.Controllers
             _categoryService = categoryService;
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllCategories()
         {
@@ -22,6 +24,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(allCategories);
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetCategoryById(string categoryId)
         {
@@ -29,6 +32,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(category);
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
@@ -36,6 +40,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Category added successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
@@ -43,6 +48,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Category updated successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteCategory(string categoryId)
         {

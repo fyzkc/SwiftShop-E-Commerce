@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Catalog.Dtos.ProductImageDtos;
 using SwiftShop.Catalog.Services.ProductImageServices;
@@ -15,6 +16,7 @@ namespace SwiftShop.Catalog.Controllers
             _productImageService = productImageService;
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllProductImages()
         {
@@ -22,6 +24,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(productImages);
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet("{productImageId}")]
         public async Task<IActionResult> GetProductImageById(string productImageId)
         {
@@ -29,6 +32,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(productImage);
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
         {
@@ -36,6 +40,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Product image created successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateProductImage(UpdateProductImageDto updateProductImageDto)
         {
@@ -43,6 +48,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Product image updated successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProductImage(string productImageId)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Catalog.Dtos.ProductDetailDtos;
 using SwiftShop.Catalog.Services.ProductDetailServices;
@@ -15,6 +16,7 @@ namespace SwiftShop.Catalog.Controllers
             _productDetailService = productDetailService;
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllProductDetails()
         {
@@ -22,6 +24,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(productDetails);
         }
 
+        [Authorize(Policy = "CatalogReadOrFullPolicy")]
         [HttpGet("{productDetailId}")]
         public async Task<IActionResult> GetProductDetailById(string productDetailId)
         {
@@ -29,6 +32,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(productDetail);
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
         {
@@ -36,6 +40,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Product detail created successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
         {
@@ -43,6 +48,7 @@ namespace SwiftShop.Catalog.Controllers
             return Ok("Product detail updated successfully");
         }
 
+        [Authorize(Policy = "CatalogFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProductDetail(string productDetailId)
         {
