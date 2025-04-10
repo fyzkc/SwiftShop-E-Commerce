@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -6,9 +7,11 @@ using SwiftShop.IdentityServer.Dtos;
 using SwiftShop.IdentityServer.Models;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static IdentityServer4.IdentityServerConstants;
 
 namespace SwiftShop.IdentityServer.Controllers
 {
+    [Authorize(LocalApi.PolicyName)]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase

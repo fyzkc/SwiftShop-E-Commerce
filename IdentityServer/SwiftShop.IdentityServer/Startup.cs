@@ -31,6 +31,7 @@ namespace SwiftShop.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
             services.AddAutoMapper(typeof(Profiles));
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -52,6 +53,7 @@ namespace SwiftShop.IdentityServer
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<ApplicationUser>();
 
@@ -83,6 +85,7 @@ namespace SwiftShop.IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
