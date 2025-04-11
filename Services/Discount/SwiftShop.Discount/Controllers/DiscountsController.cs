@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Discount.Dtos;
 using SwiftShop.Discount.Services;
@@ -16,6 +17,7 @@ namespace SwiftShop.Discount.Controllers
             _discountService = discountService;
         }
 
+        [Authorize(Policy = "DiscountReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllCoupons()
         {
@@ -23,6 +25,7 @@ namespace SwiftShop.Discount.Controllers
             return Ok(coupons);
         }
 
+        [Authorize(Policy = "DiscountReadOrFullPolicy")]
         [HttpGet("{couponId}")]
         public async Task<IActionResult> GetCouponById(int couponId)
         {
@@ -30,6 +33,7 @@ namespace SwiftShop.Discount.Controllers
             return Ok(coupon);
         }
 
+        [Authorize(Policy = "DiscountFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateCoupon(CreateCouponDto createCouponDto)
         {
@@ -37,6 +41,7 @@ namespace SwiftShop.Discount.Controllers
             return Ok("Coupon created successfully");
         }
 
+        [Authorize(Policy = "DiscountFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateCoupon(UpdateCouponDto updateCouponDto)
         {
@@ -44,6 +49,7 @@ namespace SwiftShop.Discount.Controllers
             return Ok("Coupon updated successfully");
         }
 
+        [Authorize(Policy = "DiscountFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteCoupon(int couponId)
         {
