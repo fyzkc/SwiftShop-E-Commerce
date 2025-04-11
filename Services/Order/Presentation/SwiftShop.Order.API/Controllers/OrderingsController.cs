@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Order.Application.Features.Commands.OrderingCommands;
@@ -17,6 +18,7 @@ namespace SwiftShop.Order.API.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Policy = "OrderReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllOrderings()
         {
@@ -24,6 +26,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok(orderings);
         }
 
+        [Authorize(Policy = "OrderReadOrFullPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderingById(int id)
         {
@@ -31,6 +34,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok(ordering);
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateOrdering(CreateOrderingCommand createOrderingCommand)
         {
@@ -38,6 +42,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok("Order is created successfully");
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateOrdering(UpdateOrderingCommand updateOrderingCommand)
         {
@@ -45,6 +50,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok("Order is updated successfully");
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteOrdering(int id)
         {

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Order.Application.Features.Commands.AddressCommands;
@@ -17,6 +18,7 @@ namespace SwiftShop.Order.API.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Policy = "OrderReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllAddresses()
         {
@@ -24,6 +26,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok(addresses);
         }
 
+        [Authorize(Policy = "OrderReadOrFullPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAddressById(int id)
         {
@@ -31,6 +34,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok(address);
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateAddress(CreateAddressCommand createAddressCommand)
         {
@@ -38,6 +42,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok("Address created successfully");
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateAddress(UpdateAddressCommand updateAddressCommand)
         {
@@ -45,6 +50,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok("Address updated successfully");
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteAddress(int id)
         {

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Order.Application.Features.Commands.OrderDetailCommands;
@@ -17,6 +18,7 @@ namespace SwiftShop.Order.API.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Policy = "OrderReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllOrderDetails()
         {
@@ -24,6 +26,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok(orderDetails);
         }
 
+        [Authorize(Policy = "OrderReadOrFullPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderDetailById(int id)
         {
@@ -31,6 +34,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok(orderDetail);
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateOrderDetail(CreateOrderDetailCommand createOrderDetailCommand)
         {
@@ -38,6 +42,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok("Order detail created successfully");
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateOrderDetail(UpdateOrderDetailCommand updateOrderDetailCommand)
         {
@@ -45,6 +50,7 @@ namespace SwiftShop.Order.API.Controllers
             return Ok("Order detail updated successfully");
         }
 
+        [Authorize(Policy = "OrderFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteOrderDetail(int id)
         {

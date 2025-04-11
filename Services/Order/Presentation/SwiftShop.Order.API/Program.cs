@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using SwiftShop.Order.Application.Configurations;
 using SwiftShop.Order.Application.Interfaces;
@@ -7,7 +8,30 @@ using SwiftShop.Order.Persistence.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "OrderResource";
+    opt.RequireHttpsMetadata = false;
+});
 
+builder.Services.AddAuthorization(options =>
+{
+    //its necessary to have CatalogReadPermission or CatalogFullPermission to make a GET request.
+    options.AddPolicy("OrderReadOrFullPolicy", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c =>
+                (c.Type == "scope" && c.Value == "OrderReadPermission") ||
+                (c.Type == "scope" && c.Value == "OrderFullPermission")
+            )
+        )
+    );
+
+    //its necessary to have CatalogFullPermission to make a POST request. 
+    options.AddPolicy("OrderFullPolicy", policy =>
+        policy.RequireClaim("scope", "OrderFullPermission")
+    );
+});
 
 
 builder.Services.AddControllers();
@@ -33,6 +57,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
