@@ -20,7 +20,7 @@ namespace SwiftShop.IdentityServer
             //CatalogFullPermission is for admin users.
             //CatalogReadPermission is for users that only make listing operations. 
 
-            new ApiResource("DiscountResource"){Scopes={ "DiscountFullPermission","DiscountReadPermission"}},
+            new ApiResource("DiscountResource"){Scopes={"DiscountFullPermission","DiscountReadPermission"}},
             //Discount microservice should have more limited access.
             //DiscountFullPermission is for admin or campaign manager users.
             //DiscountReadPermission is for users that only sees the coupons.
