@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using SwiftShop.Shipping.DataAccess.Concrete;
+
 namespace SwiftShop.Shipping.Api
 {
     public class Program
@@ -13,6 +16,9 @@ namespace SwiftShop.Shipping.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ShippingContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ShippingDbConnection")));
 
             var app = builder.Build();
 
