@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SwiftShop.Shipping.Business\SwiftShop.Shipping.Business.csproj" />
     <ProjectReference Include="..\SwiftShop.Shipping.DataAccess\SwiftShop.Shipping.DataAccess.csproj" />
   </ItemGroup>
 
