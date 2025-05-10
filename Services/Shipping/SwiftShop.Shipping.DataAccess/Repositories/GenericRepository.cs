@@ -11,7 +11,7 @@ namespace SwiftShop.Shipping.DataAccess.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        public readonly ShippingContext _shippingContext;
+        private readonly ShippingContext _shippingContext;
 
         public GenericRepository(ShippingContext shippingContext)
         {
