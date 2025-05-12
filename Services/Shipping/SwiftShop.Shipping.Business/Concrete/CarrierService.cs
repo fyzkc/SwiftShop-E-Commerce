@@ -1,5 +1,7 @@
-﻿using SwiftShop.Shipping.Business.Abstract;
+﻿using AutoMapper;
+using SwiftShop.Shipping.Business.Abstract;
 using SwiftShop.Shipping.DataAccess.Abstract;
+using SwiftShop.Shipping.Dto.Dtos.Carrier;
 using SwiftShop.Shipping.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,35 +14,44 @@ namespace SwiftShop.Shipping.Business.Concrete
     public class CarrierService : ICarrierService
     {
         private readonly ICarrierRepository _carrierRepository;
+        private readonly IMapper _mapper;
 
-        public CarrierService(ICarrierRepository carrierRepository)
+        public CarrierService(ICarrierRepository carrierRepository, IMapper mapper)
         {
             _carrierRepository = carrierRepository;
+            _mapper = mapper;
         }
 
-        public async Task Create(Carrier entity)
+        public async Task Create(CreateCarrierDto createDto)
         {
-            await _carrierRepository.CreateAsync(entity);
+            var creatingValue = _mapper.Map<Carrier>(createDto);
+            await _carrierRepository.CreateAsync(creatingValue);
         }
 
-        public async Task Delete(Carrier entity)
+        public async Task Delete(int id)
         {
-            await _carrierRepository.DeleteAsync(entity);
+            var deletingValue = await _carrierRepository.GetByIdAsync(id);
+            if (deletingValue == null)
+                throw new KeyNotFoundException($"Carrier with id={id} not found");
+            await _carrierRepository.DeleteAsync(deletingValue);
         }
 
-        public async Task<List<Carrier>> GetAll()
+        public async Task<List<ListCarrierDto>> GetAll()
         {
-            return await _carrierRepository.GetAllAsync();
+            var listingValues = await _carrierRepository.GetAllAsync();
+            return _mapper.Map<List<ListCarrierDto>>(listingValues);
         }
 
-        public async Task<Carrier> GetById(int id)
+        public async Task<ListCarrierDto> GetById(int id)
         {
-            return await _carrierRepository.GetByIdAsync(id);
+            var listingValue = await _carrierRepository.GetByIdAsync(id);
+            return _mapper.Map<ListCarrierDto>(listingValue);
         }
 
-        public async Task Update(Carrier entity)
+        public async Task Update(UpdateCarrierDto updateDto)
         {
-            await _carrierRepository.UpdateAsync(entity);
+            var updatingValue = _mapper.Map<Carrier>(updateDto);
+            await _carrierRepository.UpdateAsync(updatingValue);
         }
     }
 }

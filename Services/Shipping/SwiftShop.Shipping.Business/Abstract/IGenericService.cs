@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SwiftShop.Shipping.Business.Abstract
 {
-    public interface IGenericService<T> where T : class
+    public interface IGenericService<TEntity, TCreateDto, TUpdateDto, TListDto> where TEntity : class
     {
-        Task Create(T entity);
-        Task Update(T entity);
-        Task Delete(T entity);
-        Task<T> GetById(int id);
-        Task<List<T>> GetAll();
+        Task Create(TCreateDto createDto);
+        Task Update(TUpdateDto updateDto);
+        Task Delete(int id);
+        Task<TListDto> GetById(int id);
+        Task<List<TListDto>> GetAll();
     }
 }

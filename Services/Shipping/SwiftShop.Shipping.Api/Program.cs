@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using SwiftShop.Shipping.DataAccess.Concrete;
+using SwiftShop.Shipping.Dto.Mapping;
+using System.Reflection;
 
 namespace SwiftShop.Shipping.Api
 {
@@ -19,6 +21,8 @@ namespace SwiftShop.Shipping.Api
 
             builder.Services.AddDbContext<ShippingContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ShippingDbConnection")));
+
+            builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(Profiles)));
 
             var app = builder.Build();
 

@@ -1,5 +1,7 @@
-﻿using SwiftShop.Shipping.Business.Abstract;
+﻿using AutoMapper;
+using SwiftShop.Shipping.Business.Abstract;
 using SwiftShop.Shipping.DataAccess.Abstract;
+using SwiftShop.Shipping.Dto.Dtos.Company;
 using SwiftShop.Shipping.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,35 +14,44 @@ namespace SwiftShop.Shipping.Business.Concrete
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _companyRepository;
+        private readonly IMapper _mapper;
 
-        public CompanyService(ICompanyRepository companyRepository)
+        public CompanyService(ICompanyRepository companyRepository, IMapper mapper)
         {
             _companyRepository = companyRepository;
+            _mapper = mapper;
         }
 
-        public async Task Create(Company entity)
+        public async Task Create(CreateCompanyDto createDto)
         {
-            await _companyRepository.CreateAsync(entity);
+            var creatingValue = _mapper.Map<Company>(createDto);
+            await _companyRepository.CreateAsync(creatingValue);
         }
 
-        public async Task Delete(Company entity)
+        public async Task Delete(int id)
         {
-            await _companyRepository.DeleteAsync(entity);
+            var deletingValue = await _companyRepository.GetByIdAsync(id);
+            if (deletingValue == null)
+                throw new KeyNotFoundException($"Carrier with id={id} not found");
+            await _companyRepository.DeleteAsync(deletingValue);
         }
 
-        public async Task<List<Company>> GetAll()
+        public async Task<List<ListCompanyDto>> GetAll()
         {
-            return await _companyRepository.GetAllAsync();
+            var listingValues = await _companyRepository.GetAllAsync();
+            return _mapper.Map<List<ListCompanyDto>>(listingValues);
         }
 
-        public async Task<Company> GetById(int id)
+        public async Task<ListCompanyDto> GetById(int id)
         {
-            return await _companyRepository.GetByIdAsync(id);
+            var listingValue = await _companyRepository.GetByIdAsync(id);
+            return _mapper.Map<ListCompanyDto>(listingValue);
         }
 
-        public async Task Update(Company entity)
+        public async Task Update(UpdateCompanyDto updateDto)
         {
-            await _companyRepository.UpdateAsync(entity);
+            var updatingValue = _mapper.Map<Company>(updateDto);
+            await _companyRepository.UpdateAsync(updatingValue);
         }
     }
 }
