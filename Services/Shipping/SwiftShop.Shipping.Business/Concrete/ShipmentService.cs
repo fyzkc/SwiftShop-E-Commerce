@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SwiftShop.Shipping.Business.Abstract;
+using SwiftShop.Shipping.DataAccess.Abstract;
 using SwiftShop.Shipping.DataAccess.Repositories;
 using SwiftShop.Shipping.Dto.Dtos.Shipment;
 using SwiftShop.Shipping.Entity.Entities;
@@ -13,10 +14,10 @@ namespace SwiftShop.Shipping.Business.Concrete
 {
     public class ShipmentService : IShipmentService
     {
-        private readonly ShipmentRepository _shipmentRepository;
+        private readonly IShipmentRepository _shipmentRepository;
         private readonly IMapper _mapper;
 
-        public ShipmentService(ShipmentRepository shipmentRepository, IMapper mapper)
+        public ShipmentService(IShipmentRepository shipmentRepository, IMapper mapper)
         {
             _shipmentRepository = shipmentRepository;
             _mapper = mapper;
