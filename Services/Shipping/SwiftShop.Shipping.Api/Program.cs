@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using SwiftShop.Shipping.Business.Abstract;
 using SwiftShop.Shipping.Business.Concrete;
@@ -15,6 +16,31 @@ namespace SwiftShop.Shipping.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+            {
+                opt.Authority = builder.Configuration["IdentityServerUrl"];
+                opt.Audience = "ShippingResource";
+                opt.RequireHttpsMetadata = false;
+            });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                //its necessary to have CatalogReadPermission or CatalogFullPermission to make a GET request.
+                options.AddPolicy("ShippingReadOrFullPolicy", policy =>
+                    policy.RequireAssertion(context =>
+                        context.User.HasClaim(c =>
+                            (c.Type == "scope" && c.Value == "ShippingReadPermission") ||
+                            (c.Type == "scope" && c.Value == "ShippingFullPermission")
+                        )
+                    )
+                );
+
+                //its necessary to have CatalogFullPermission to make a POST request. 
+                options.AddPolicy("ShippingFullPolicy", policy =>
+                    policy.RequireClaim("scope", "ShippingFullPermission")
+                );
+            });
 
             // Add services to the container.
 

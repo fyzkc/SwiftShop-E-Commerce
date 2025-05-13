@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Shipping.Business.Abstract;
 using SwiftShop.Shipping.Dto.Dtos.Shipment;
@@ -16,6 +17,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             _shipmentService = shipmentService;
         }
 
+        [Authorize(Policy = "ShippingReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllShipments()
         {
@@ -23,6 +25,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok(allShipments);
         }
 
+        [Authorize(Policy = "ShippingReadOrFullPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetShipmentById(int id)
         {
@@ -30,6 +33,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok(shipment);
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateShipment(CreateShipmentDto createShipmentDto)
         {
@@ -37,6 +41,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok("Shipment created successfully!");
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateShipment(UpdateShipmentDto updateShipmentDto)
         {
@@ -44,6 +49,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok("Shipment updated successfully!");
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteShipment(int id)
         {

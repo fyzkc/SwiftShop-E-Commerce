@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Shipping.Business.Abstract;
 using SwiftShop.Shipping.Dto.Dtos.Company;
@@ -16,6 +17,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             _companyService = companyService;
         }
 
+        [Authorize(Policy = "ShippingReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllCompanies()
         {
@@ -23,6 +25,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok(allCompanies);
         }
 
+        [Authorize(Policy = "ShippingReadOrFullPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCompanyById(int id)
         {
@@ -30,6 +33,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok(company);
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateCompany(CreateCompanyDto createCompanyDto)
         {
@@ -37,6 +41,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok("Company created successfully!");
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateCompany(UpdateCompanyDto updateCompanyDto)
         {
@@ -44,6 +49,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok("Company updated successfully!");
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteCompany(int id)
         {

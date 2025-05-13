@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SwiftShop.Shipping.Business.Abstract;
 using SwiftShop.Shipping.Dto.Dtos.Carrier;
@@ -16,6 +17,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             _carrierService = carrierService;
         }
 
+        [Authorize(Policy = "ShippingReadOrFullPolicy")]
         [HttpGet]
         public async Task<IActionResult> GetAllCarriers()
         {
@@ -23,6 +25,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok(allCarriers);
         }
 
+        [Authorize(Policy = "ShippingReadOrFullPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCarrierById(int id)
         {
@@ -30,6 +33,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok(carrier);
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpPost]
         public async Task<IActionResult> CreateCarrier(CreateCarrierDto createCarrierDto)
         {
@@ -37,6 +41,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok("Carrier created successfully!");
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpPut]
         public async Task<IActionResult> UpdateCarrier(UpdateCarrierDto updateCarrierDto)
         {
@@ -44,6 +49,7 @@ namespace SwiftShop.Shipping.Api.Controllers
             return Ok("Carrier updated successfully!");
         }
 
+        [Authorize(Policy = "ShippingFullPolicy")]
         [HttpDelete]
         public async Task<IActionResult> DeleteCarrier(int id)
         {
