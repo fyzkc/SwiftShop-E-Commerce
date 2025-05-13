@@ -1,6 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
+using SwiftShop.Shipping.Business.Abstract;
+using SwiftShop.Shipping.Business.Concrete;
+using SwiftShop.Shipping.DataAccess.Abstract;
 using SwiftShop.Shipping.DataAccess.Concrete;
+using SwiftShop.Shipping.DataAccess.Repositories;
 using SwiftShop.Shipping.Dto.Mapping;
 using System.Reflection;
 
@@ -23,6 +27,17 @@ namespace SwiftShop.Shipping.Api
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ShippingDbConnection")));
 
             builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(Profiles)));
+
+            //repositories
+            builder.Services.AddScoped<ICarrierRepository, CarrierRepository>();
+            builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<IShipmentRepository, ShipmentRepository>();
+
+            //services
+            builder.Services.AddScoped<ICarrierService, CarrierService>();
+            builder.Services.AddScoped<ICompanyService, CompanyService>();
+            builder.Services.AddScoped<IShipmentService, ShipmentService>();
 
             var app = builder.Build();
 
