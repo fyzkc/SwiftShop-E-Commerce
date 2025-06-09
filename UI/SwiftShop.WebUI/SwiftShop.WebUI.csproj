@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\online-shop-website-template_\**" />
+    <Content Remove="wwwroot\online-shop-website-template_\**" />
+    <EmbeddedResource Remove="wwwroot\online-shop-website-template_\**" />
+    <None Remove="wwwroot\online-shop-website-template_\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
