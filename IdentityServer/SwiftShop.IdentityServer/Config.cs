@@ -34,6 +34,8 @@ namespace SwiftShop.IdentityServer
             //ShippingFullPermission is for making a shipment and its manager's job. 
             //visitor users shouldn't be able to change anything on a shipment. they only can see the details of the shipments. 
 
+            new ApiResource("CartResource"){Scopes={"CartFullPermission","CartReadPermission"}},
+
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 
         };
@@ -69,6 +71,9 @@ namespace SwiftShop.IdentityServer
             new ApiScope("ShippingFullPermission","Full access to Shipping service"),
             new ApiScope("ShippingReadPermission","Read-only access to Shipping service"),
 
+            new ApiScope("CartFullPermission", "Full access to Cart service"),
+            new ApiScope("CartReadPermission","Read-only access to Cart service"),
+
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -83,13 +88,14 @@ namespace SwiftShop.IdentityServer
             {
                 ClientId="VisitorId",
                 ClientName = "Swift Shop Visitor User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials, //this token is using for only for these client types, not for a spesific login process.
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, //this token is using for taking the sub value of an user. 
                 ClientSecrets={new Secret("swiftshopsecret".Sha256())},
                 AllowedScopes = { 
                     "CatalogReadPermission", 
                     "OrderFullPermission",
                     "DiscountReadPermission",
-                    "ShippingReadPermission" }
+                    "ShippingReadPermission",
+                    "CartFullPermission"}
                 //AccessTokenLifetime is 1 hour as default.
             },
 
@@ -98,7 +104,7 @@ namespace SwiftShop.IdentityServer
             {
                 ClientId="ManagerId",
                 ClientName="Swift Shop Manager User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials,
+                AllowedGrantTypes=GrantTypes.ClientCredentials, //this token is using for only for these client types, not for a spesific login process.
                 ClientSecrets={new Secret("swiftshopsecret".Sha256())},
                 AllowedScopes = { 
                     "CatalogFullPermission", 
@@ -119,6 +125,7 @@ namespace SwiftShop.IdentityServer
                     "DiscountFullPermission", 
                     "OrderFullPermission",
                     "ShippingFullPermission",
+                    "CartFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName, //this constant defines the IdentityServer's own API.
                     IdentityServerConstants.StandardScopes.Email, //these scopes are necessary for taking the user informations via OpenID.
                     IdentityServerConstants.StandardScopes.OpenId,
