@@ -1,0 +1,7 @@
+Port numbers of microservices:
+
+Catalog  -> 7100
+Discount -> 7101
+Order    -> 7102
+Shipping -> 7103
+Cart	 -> 7104
