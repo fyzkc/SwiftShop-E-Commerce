@@ -54,6 +54,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 		PortNumbers.txt = PortNumbers.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8BDE77AC-C573-41CC-A9BA-52886B23387E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.WebUI", "UI\SwiftShop.WebUI\SwiftShop.WebUI.csproj", "{F1CEC818-BC90-45FE-879F-F20C1B70041B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +116,10 @@ Global
 		{616A877A-8110-4C75-9816-8CC2C19C933F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{616A877A-8110-4C75-9816-8CC2C19C933F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{616A877A-8110-4C75-9816-8CC2C19C933F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1CEC818-BC90-45FE-879F-F20C1B70041B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CEC818-BC90-45FE-879F-F20C1B70041B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CEC818-BC90-45FE-879F-F20C1B70041B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CEC818-BC90-45FE-879F-F20C1B70041B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +146,7 @@ Global
 		{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6} = {1435DA9B-D7A9-42D5-A04C-521A5646754B}
 		{B34E48B3-6447-485E-9C51-9AB25CA24951} = {DBBD6482-D9BC-45E6-9FB7-EB4B17C71B03}
 		{616A877A-8110-4C75-9816-8CC2C19C933F} = {B34E48B3-6447-485E-9C51-9AB25CA24951}
+		{F1CEC818-BC90-45FE-879F-F20C1B70041B} = {8BDE77AC-C573-41CC-A9BA-52886B23387E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {929BF761-350B-4EEB-A32A-B9B362C04766}
