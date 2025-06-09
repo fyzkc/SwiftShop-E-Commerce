@@ -18,7 +18,8 @@ namespace SwiftShop.Catalog.Controllers
             _productService = productService;
         }
 
-        [Authorize(Policy = "CatalogReadOrFullPolicy")]
+        //[Authorize(Policy = "CatalogReadOrFullPolicy")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
@@ -26,7 +27,8 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(allProducts);
         }
 
-        [Authorize(Policy = "CatalogReadOrFullPolicy")]
+        //[Authorize(Policy = "CatalogReadOrFullPolicy")]
+        [AllowAnonymous]
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetProductById(string productId)
         {

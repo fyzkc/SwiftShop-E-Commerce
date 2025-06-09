@@ -16,7 +16,8 @@ namespace SwiftShop.Catalog.Controllers
             _productImageService = productImageService;
         }
 
-        [Authorize(Policy = "CatalogReadOrFullPolicy")]
+        //[Authorize(Policy = "CatalogReadOrFullPolicy")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllProductImages()
         {
@@ -24,7 +25,8 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(productImages);
         }
 
-        [Authorize(Policy = "CatalogReadOrFullPolicy")]
+        //[Authorize(Policy = "CatalogReadOrFullPolicy")]
+        [AllowAnonymous]
         [HttpGet("{productImageId}")]
         public async Task<IActionResult> GetProductImageById(string productImageId)
         {

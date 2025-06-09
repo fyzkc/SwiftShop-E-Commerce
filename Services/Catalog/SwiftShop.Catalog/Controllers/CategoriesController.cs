@@ -16,7 +16,8 @@ namespace SwiftShop.Catalog.Controllers
             _categoryService = categoryService;
         }
 
-        [Authorize(Policy = "CatalogReadOrFullPolicy")]
+        //[Authorize(Policy = "CatalogReadOrFullPolicy")]
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllCategories()
         {
@@ -24,7 +25,8 @@ namespace SwiftShop.Catalog.Controllers
             return Ok(allCategories);
         }
 
-        [Authorize(Policy = "CatalogReadOrFullPolicy")]
+        //[Authorize(Policy = "CatalogReadOrFullPolicy")]
+        [AllowAnonymous]
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetCategoryById(string categoryId)
         {
