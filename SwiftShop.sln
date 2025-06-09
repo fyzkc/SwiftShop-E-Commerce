@@ -35,15 +35,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.IdentityServer", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shipping", "Shipping", "{1435DA9B-D7A9-42D5-A04C-521A5646754B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Shipping.Business", "Services\Shipping\SwiftShop.Shipping.Business\SwiftShop.Shipping.Business.csproj", "{A7F89B75-8854-4B18-AE3D-7AC86D98BBE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Shipping.Business", "Services\Shipping\SwiftShop.Shipping.Business\SwiftShop.Shipping.Business.csproj", "{A7F89B75-8854-4B18-AE3D-7AC86D98BBE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Shipping.Entity", "Services\Shipping\SwiftShop.Shipping.Entity\SwiftShop.Shipping.Entity.csproj", "{BCC7B4AD-86C3-4A67-9C6E-EEE9DB1E41BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Shipping.Entity", "Services\Shipping\SwiftShop.Shipping.Entity\SwiftShop.Shipping.Entity.csproj", "{BCC7B4AD-86C3-4A67-9C6E-EEE9DB1E41BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Shipping.DataAccess", "Services\Shipping\SwiftShop.Shipping.DataAccess\SwiftShop.Shipping.DataAccess.csproj", "{2F79025E-F0FC-44A7-990E-5A4EE4F53D53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Shipping.DataAccess", "Services\Shipping\SwiftShop.Shipping.DataAccess\SwiftShop.Shipping.DataAccess.csproj", "{2F79025E-F0FC-44A7-990E-5A4EE4F53D53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Shipping.Dto", "Services\Shipping\SwiftShop.Shipping.Dto\SwiftShop.Shipping.Dto.csproj", "{56683ECC-E859-47E8-8ACB-1B613F354C1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Shipping.Dto", "Services\Shipping\SwiftShop.Shipping.Dto\SwiftShop.Shipping.Dto.csproj", "{56683ECC-E859-47E8-8ACB-1B613F354C1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftShop.Shipping.Api", "Services\Shipping\SwiftShop.Shipping.Api\SwiftShop.Shipping.Api.csproj", "{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Shipping.Api", "Services\Shipping\SwiftShop.Shipping.Api\SwiftShop.Shipping.Api.csproj", "{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cart", "Cart", "{B34E48B3-6447-485E-9C51-9AB25CA24951}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftShop.Cart", "Services\Cart\SwiftShop.Cart\SwiftShop.Cart.csproj", "{616A877A-8110-4C75-9816-8CC2C19C933F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{BAA465C9-418C-4E85-8D24-9048F90CB14F}"
+	ProjectSection(SolutionItems) = preProject
+		PortNumbers.txt = PortNumbers.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +108,10 @@ Global
 		{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{616A877A-8110-4C75-9816-8CC2C19C933F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{616A877A-8110-4C75-9816-8CC2C19C933F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{616A877A-8110-4C75-9816-8CC2C19C933F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{616A877A-8110-4C75-9816-8CC2C19C933F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +136,8 @@ Global
 		{2F79025E-F0FC-44A7-990E-5A4EE4F53D53} = {1435DA9B-D7A9-42D5-A04C-521A5646754B}
 		{56683ECC-E859-47E8-8ACB-1B613F354C1A} = {1435DA9B-D7A9-42D5-A04C-521A5646754B}
 		{80D355B7-B10D-4A96-B3F5-05C74F0E2BD6} = {1435DA9B-D7A9-42D5-A04C-521A5646754B}
+		{B34E48B3-6447-485E-9C51-9AB25CA24951} = {DBBD6482-D9BC-45E6-9FB7-EB4B17C71B03}
+		{616A877A-8110-4C75-9816-8CC2C19C933F} = {B34E48B3-6447-485E-9C51-9AB25CA24951}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {929BF761-350B-4EEB-A32A-B9B362C04766}
