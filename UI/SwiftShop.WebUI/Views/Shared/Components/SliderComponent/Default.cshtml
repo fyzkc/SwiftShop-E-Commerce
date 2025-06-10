@@ -1,5 +1,6 @@
 ﻿
 @*
+    //Slider View Component
 *@
 
 <div class="container-fluid mb-3">
@@ -43,5 +44,11 @@
             </div>
         </div>
         @await Component.InvokeAsync("SpecialOfferComponent")
+        @await Component.InvokeAsync("FeaturesComponent")
+        @await Component.InvokeAsync("CategoriesComponent")
+        @await Component.InvokeAsync("ProductsComponent")
+        @await Component.InvokeAsync("BrandsComponent")
+        
+        
     </div>
 </div>
