@@ -1,0 +1,36 @@
+﻿
+@{
+    //AdminLayout View
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("AdminHeadComponent")
+
+<body class="sidebar-mini">
+    <div class="wrapper">
+
+        <!--Main Header-->
+        @await Component.InvokeAsync("AdminHeaderComponent")
+        <!--Left side column. contains the logo and sidebar -->
+        @await Component.InvokeAsync("AdminSidebarComponent")
+
+        <!-- Content Wrapper. Contains page content-->
+        <div class="content-wrapper">
+            <!--Content Header(Page header)-->
+            @await Component.InvokeAsync("AdminContentHeaderComponent")
+            <!--Main content-->
+            @RenderBody()
+            <!--content-->
+        </div>
+        <!--content - wrapper-->
+        <!--Main Footer-->
+        @await Component.InvokeAsync("AdminFooterComponent")
+    </div>
+    <!--wrapper-->
+    <!--jQuery-->
+    @await Component.InvokeAsync("AdminScriptComponent")
+
+</body>
+</html>
