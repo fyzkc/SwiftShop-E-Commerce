@@ -1,0 +1,20 @@
+﻿
+@{
+    //ContactController View
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Contact Us</span></h2>
+    <div class="row px-xl-5">
+
+        <!--Contact Form Start-->
+        @await Component.InvokeAsync("ContactFormComponent")
+        <!--Contact Form End-->
+
+        <!--Contact Address Start-->
+        @await Component.InvokeAsync("ContactAddressComponent")
+        <!--Contact Address End-->
+    </div>
+</div>

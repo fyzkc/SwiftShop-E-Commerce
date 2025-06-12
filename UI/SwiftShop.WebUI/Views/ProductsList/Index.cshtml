@@ -1,0 +1,50 @@
+﻿
+@{
+    //ProductsListController's View
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-md-4">
+            <!-- Price Start -->
+            @await Component.InvokeAsync("FilterByPriceComponent")
+            <!-- Price End -->
+
+            <!-- Color Start -->
+            @await Component.InvokeAsync("FilterByColorComponent")            
+            <!-- Color End -->
+
+            <!-- Size Start -->
+            @await Component.InvokeAsync("FilterBySizeComponent")            
+            <!-- Size End -->
+
+        </div>
+        <!-- Shop Sidebar End -->
+
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-8">
+            <div class="row pb-3">
+
+                <!--Sorting Start-->                
+                <div class="col-12 pb-1">
+                    @await Component.InvokeAsync("SortingComponent")
+                </div>
+                <!--Sorting End-->
+
+                <!--Products Start-->
+                @await Component.InvokeAsync("ProductsListComponent")
+                <!--Products End-->
+
+                <!--Paginations Start-->
+                @await Component.InvokeAsync("PaginationsComponent")
+                <!--Paginations Start-->
+
+            </div>
+        </div>
+        <!-- Shop Product End -->
+    </div>
+</div>

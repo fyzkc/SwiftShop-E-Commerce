@@ -1,0 +1,22 @@
+﻿
+@{
+    //ShoppingCartController View
+
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+
+        <!--Products In Cart Start-->
+        @await Component.InvokeAsync("CartProductsComponent")
+        <!--Products In Cart End-->
+
+        <!--Cart Summary Start-->
+        @await Component.InvokeAsync("CartSummaryComponent")
+        <!--Cart Summary Start-->
+    </div>
+</div>
