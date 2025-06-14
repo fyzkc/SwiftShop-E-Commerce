@@ -1,0 +1,57 @@
+﻿@model List<ProductWithCategoryViewModel>
+
+@{
+    //Ürünler Index sayfası
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Ürünler</h4>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Ürün Kategorisi</th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün Fiyatı</th>
+                                <th>Ürün Görselleri</th>
+                                <th>Ürün Açıklaması</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.CategoryName</td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td>@item.ProductImageUrl</td>
+                                    <td>@item.ProductDescription</td>
+                                    <td>
+                                        <form asp-area="Admin" asp-controller="Product" asp-action="DeleteProduct" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.ProductId" />
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?')">
+                                                Sil
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-warning">Güncelle</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Product/CreateProduct" class="btn btn-primary">Ürün Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
