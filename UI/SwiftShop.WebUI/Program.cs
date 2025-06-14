@@ -28,16 +28,17 @@ namespace SwiftShop.WebUI
             app.UseAuthorization();
 
             app.MapControllerRoute(
-                name: "default",
+                name: "areas",
+                pattern: "{area:exists}/{controller}/{action}/{id?}");
+
+            app.MapControllerRoute(
+                name: "homepage",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller}/{action}/{id?}");
+            
 
             app.Run();
         }

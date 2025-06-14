@@ -1,4 +1,4 @@
-﻿@model List<SwiftShop.UIDtoLayer.CatalogDtos.CategoryDtos.ResultCategoryDto>
+﻿@model List<ResultCategoryDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,21 +14,26 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>Kategori Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <th scope="row">@item.CategoryId</th>
+                                    @* <th scope="row">@item.CategoryId</th> *@
                                     <td>@item.CategoryName</td>
-                                    <td><a href="#" class="btn btn-warning">Kategoriye Ait Ürünler</a></td>
-                                    <td><a href="#" class="btn btn-warning">Sil</a></td>
-                                    <td><a href="#" class="btn btn-warning">Güncelle</a></td>
+                                    <td>
+                                        <form asp-area="Admin" asp-controller="Category" asp-action="DeleteCategory" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.CategoryId" />
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Silmek istediğinizden emin misiniz?')">
+                                                Sil
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td><a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
                                 </tr>
                             }                            
 
