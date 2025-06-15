@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SwiftShop.Catalog.Dtos.CategoryDtos;
+using SwiftShop.Catalog.Dtos.FeatureSliderDtos;
 using SwiftShop.Catalog.Dtos.ProductDetailDtos;
 using SwiftShop.Catalog.Dtos.ProductDtos;
 using SwiftShop.Catalog.Dtos.ProductImageDtos;
@@ -26,6 +27,10 @@ namespace SwiftShop.Catalog.Mapping
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, ResultProductImageDto>().ReverseMap();
             CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
+            
+            CreateMap<FeatureSlider, CreateFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, ResultFeatureSliderDto>().ReverseMap();
+            CreateMap<FeatureSlider, UpdateFeatureSliderDto>().ReverseMap();
         }
     }
 }

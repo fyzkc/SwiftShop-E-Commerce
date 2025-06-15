@@ -23,10 +23,6 @@ namespace SwiftShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            //ViewBag.SectionLink1 = "Anasayfa";
-            //ViewBag.SectionLink2 = "Kategoriler";
-            //ViewBag.SectionLink3 = "Kategori Listesi";
-            //ViewBag.SectionTitle = "Kategori İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7100/api/Categories");
@@ -45,10 +41,6 @@ namespace SwiftShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CreateCategory()
         {
-            //ViewBag.SectionLink1 = "Anasayfa";
-            //ViewBag.SectionLink2 = "Kategoriler";
-            //ViewBag.SectionLink3 = "Yeni Kategori";
-            //ViewBag.SectionTitle = "Kategori Ekle";
             return View();
         }
 
