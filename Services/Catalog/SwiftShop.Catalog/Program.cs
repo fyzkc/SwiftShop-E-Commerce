@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using SwiftShop.Catalog.Services.BrandCampaignServices;
 using SwiftShop.Catalog.Services.CategoryServices;
 using SwiftShop.Catalog.Services.FeatureSliderServices;
 using SwiftShop.Catalog.Services.ProductDetailServices;
@@ -44,6 +45,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
 builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
+builder.Services.AddScoped<IBrandCampaignService, BrandCampaignService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());  // Registers only the AutoMapper profiles in the current executing assembly (project). 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // Registers AutoMapper profiles from all loaded assemblies (not ideal for microservices).

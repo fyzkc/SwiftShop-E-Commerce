@@ -1,27 +1,27 @@
-﻿
+﻿@model List<ResultBrandCampaignDto>
 @*
     //Brands Component
 *@
 
 <div class="container-fluid pt-5 pb-3">
-    <div class="row px-xl-5">
-        <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="~/online-shop-website-template/img/offer-1.jpg" alt="">
-                <div class="offer-text">
-                    <h3 class="text-white mb-3">MAVİ</h3>
-                    <a href="" class="btn btn-primary">Alışverişe Başla</a>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Markalar ve Kampanyalar</span></h2>
+    @for (int i = 0; i < Model.Count; i += 2)
+    {
+        <div class="row px-xl-5">
+            @for (int j = i; j < i + 2 && j < Model.Count; j++)
+            {
+                var item = Model[j];
+                <div class="col-md-6">
+                    <div class="product-offer mb-30" style="height: 300px; position: relative;">
+                        <img class="img-fluid w-100 h-100" src="@item.ImageUrl" style="object-fit: cover;" alt="">
+                        <div class="offer-text" style="position: absolute; top: 0; left: 0; padding: 20px;">
+                            <h6 class="text-white text-uppercase">@item.Title</h6>
+                            <h3 class="text-white mb-3">@item.SubTitle</h3>
+                            <a href="#" class="btn btn-warning text-dark">Alışverişe Başla</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
-        <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="~/online-shop-website-template/img/offer-2.jpg" alt="">
-                <div class="offer-text">
-                    <h3 class="text-white mb-3">Koton</h3>
-                    <a href="" class="btn btn-primary">Alışverişe Başla</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    }
 </div>

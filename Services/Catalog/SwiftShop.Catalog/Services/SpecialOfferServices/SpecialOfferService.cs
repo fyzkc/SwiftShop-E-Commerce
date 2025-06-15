@@ -10,7 +10,6 @@ namespace SwiftShop.Catalog.Services.SpecialOfferServices
     {
         private readonly IMongoCollection<SpecialOffer> _specialOfferCollection;
         private readonly IMapper _mapper;
-        private object _featureSliderCollection;
 
         public SpecialOfferService(IMapper mapper, IDatabaseSettings databaseSettings)
         {

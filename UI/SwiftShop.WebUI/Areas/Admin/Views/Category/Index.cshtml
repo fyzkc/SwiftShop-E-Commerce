@@ -15,6 +15,7 @@
                         <thead>
                             <tr>
                                 <th>Kategori Adı</th>
+                                <th>Görsel</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -25,6 +26,7 @@
                                 <tr>
                                     @* <th scope="row">@item.CategoryId</th> *@
                                     <td>@item.CategoryName</td>
+                                    <td>@item.ImageUrl</td>
                                     <td>
                                         <form asp-area="Admin" asp-controller="Category" asp-action="DeleteCategory" method="post" style="display:inline;">
                                             <input type="hidden" name="id" value="@item.CategoryId" />

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SwiftShop.Catalog.Dtos.BrandCampaignDtos;
 using SwiftShop.Catalog.Dtos.CategoryDtos;
 using SwiftShop.Catalog.Dtos.FeatureSliderDtos;
 using SwiftShop.Catalog.Dtos.ProductDetailDtos;
@@ -36,6 +37,10 @@ namespace SwiftShop.Catalog.Mapping
             CreateMap<SpecialOffer, CreateSpecialOfferDto>().ReverseMap();
             CreateMap<SpecialOffer, ResultSpecialOfferDto>().ReverseMap();
             CreateMap<SpecialOffer, UpdateSpecialOfferDto>().ReverseMap();
+
+            CreateMap<BrandCampaign, CreateBrandCampaignDto>().ReverseMap();
+            CreateMap<BrandCampaign, ResultBrandCampaignDto>().ReverseMap();
+            CreateMap<BrandCampaign, UpdateBrandCampaignDto>().ReverseMap();
         }
     }
 }
