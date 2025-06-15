@@ -5,6 +5,7 @@ using SwiftShop.Catalog.Services.FeatureSliderServices;
 using SwiftShop.Catalog.Services.ProductDetailServices;
 using SwiftShop.Catalog.Services.ProductImageServices;
 using SwiftShop.Catalog.Services.ProductServices;
+using SwiftShop.Catalog.Services.SpecialOfferServices;
 using SwiftShop.Catalog.Settings;
 using System.Reflection;
 
@@ -42,6 +43,7 @@ builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());  // Registers only the AutoMapper profiles in the current executing assembly (project). 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // Registers AutoMapper profiles from all loaded assemblies (not ideal for microservices).

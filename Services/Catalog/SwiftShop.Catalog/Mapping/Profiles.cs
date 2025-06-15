@@ -4,6 +4,7 @@ using SwiftShop.Catalog.Dtos.FeatureSliderDtos;
 using SwiftShop.Catalog.Dtos.ProductDetailDtos;
 using SwiftShop.Catalog.Dtos.ProductDtos;
 using SwiftShop.Catalog.Dtos.ProductImageDtos;
+using SwiftShop.Catalog.Dtos.SpecialOfferDtos;
 using SwiftShop.Catalog.Entities;
 
 namespace SwiftShop.Catalog.Mapping
@@ -31,6 +32,10 @@ namespace SwiftShop.Catalog.Mapping
             CreateMap<FeatureSlider, CreateFeatureSliderDto>().ReverseMap();
             CreateMap<FeatureSlider, ResultFeatureSliderDto>().ReverseMap();
             CreateMap<FeatureSlider, UpdateFeatureSliderDto>().ReverseMap();
+            
+            CreateMap<SpecialOffer, CreateSpecialOfferDto>().ReverseMap();
+            CreateMap<SpecialOffer, ResultSpecialOfferDto>().ReverseMap();
+            CreateMap<SpecialOffer, UpdateSpecialOfferDto>().ReverseMap();
         }
     }
 }
