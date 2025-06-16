@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ProductWithCategoryViewModel>
 @{
     //ProductsListController's View
     ViewData["Title"] = "Index";
@@ -36,7 +36,8 @@
                 <!--Sorting End-->
 
                 <!--Products Start-->
-                @await Component.InvokeAsync("ProductsListComponent")
+                @* @await Component.InvokeAsync("ProductsListComponent") *@
+                @await Component.InvokeAsync("ProductsListComponent", new { products = Model })
                 <!--Products End-->
 
                 <!--Paginations Start-->
