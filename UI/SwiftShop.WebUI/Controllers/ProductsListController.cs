@@ -49,6 +49,9 @@ namespace SwiftShop.WebUI.Controllers
                     CategoryName = categories.FirstOrDefault(c => c.CategoryId == p.CategoryId)?.CategoryName
                 }).ToList();
 
+            // Seçilen kategori ID’yi View’a taşı
+            ViewBag.SelectedCategoryId = categoryId;
+
             return View(viewModel);
         }
     }

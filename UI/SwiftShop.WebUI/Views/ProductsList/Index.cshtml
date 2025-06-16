@@ -18,7 +18,7 @@
             <!-- Color End -->
 
             <!-- Size Start -->
-            @await Component.InvokeAsync("FilterBySizeComponent")            
+            @await Component.InvokeAsync("FilterBySizeComponent", new { categoryId = ViewBag.SelectedCategoryId })
             <!-- Size End -->
 
         </div>

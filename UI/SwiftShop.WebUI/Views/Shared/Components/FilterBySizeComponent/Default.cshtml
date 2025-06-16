@@ -1,10 +1,45 @@
-﻿
+﻿@model List<string>
 @*
     // FilterBySize Component
 *@
 
-<h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Beden</span></h5>
+
+<h5 class="section-title position-relative text-uppercase mb-3">
+    <span class="bg-secondary pr-3">Beden</span>
+</h5>
+
 <div class="bg-light p-4 mb-30">
+    <form>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var size = Model[i];
+            var checkboxId = $"size-{i + 1}"; <!-- Benzersiz ID üretimi -->
+
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <input type="checkbox" class="custom-control-input" id="@checkboxId" name="size" value="@size">
+                <label class="custom-control-label" for="@checkboxId">@size</label>
+            </div>
+        }
+    </form>
+</div>
+
+
+@* <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Beden</span></h5>
+
+<div class="mb-4">
+    @foreach (var size in Model)
+    {
+        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+            <input type="checkbox" class="custom-control-input" id="@size">
+            <label class="custom-control-label" for="@size">@size</label>
+            <span class="badge border font-weight-normal text-body">X</span>
+        </div>
+    }
+</div> *@
+
+
+
+@* <div class="bg-light p-4 mb-30">
     <form>
         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
             <input type="checkbox" class="custom-control-input" id="size-1">
@@ -27,4 +62,4 @@
             <label class="custom-control-label" for="size-5">XL</label>
         </div>
     </form>
-</div>
+</div> *@
