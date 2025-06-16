@@ -23,7 +23,10 @@ namespace SwiftShop.WebUI.ViewComponents.DefaultViewComponents
             var productJson = await responseMessage.Content.ReadAsStringAsync();
             var products = JsonConvert.DeserializeObject<List<ResultProductDto>>(productJson);
 
-            return View(products);
+            // Rastgele sırala ve ilk 8 ürünü al
+            var randomProducts = products.OrderBy(x => Guid.NewGuid()).Take(8).ToList();
+
+            return View(randomProducts);
         }
     }
 }

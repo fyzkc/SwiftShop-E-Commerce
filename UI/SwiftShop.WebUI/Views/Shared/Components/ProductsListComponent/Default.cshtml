@@ -2,8 +2,121 @@
 @*
     //ProductsList Component
 *@
+@* Stil Tanımı *@
+<style>
+    .product-item {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+    .product-img img {
+        height: 400px; /* Sabit yükseklik */
+        object-fit: cover;
+    }
+</style>
+
+@if (Model.Any())
+{
+    <h5 class="section-title position-relative text-uppercase mb-3">
+        <span class="bg-secondary pr-3">@Model[0].CategoryName</span>
+    </h5>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex">
+            <div class="product-item bg-light mb-4 w-100">
+                <div class="product-img position-relative overflow-hidden">
+                    <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="">
+                    <div class="product-action">
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <strong class="d-block">@item.ProductName</strong>
+                    <small class="text-muted d-block">@item.ProductDescription</small>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        <h5>@item.ProductPrice ₺</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+<!--Yeni versiyon ama tek ürün varken bozulmalar oluyor.-->
+
+@* <div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6 pb-4 d-flex">
+            <div class="product-item bg-light mb-4 w-100">
+                <div class="product-img position-relative overflow-hidden">
+                    <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="">
+                    <div class="product-action">
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <strong class="d-block">@item.ProductName</strong>
+                    <small class="text-muted d-block">@item.ProductDescription</small>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        <h5>@item.ProductPrice ₺</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div> *@
+
+
+<!--Yeni versiyon ama her bir ürün kartı farklı boyutlarda:-->
+@* <div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4">
+                <div class="product-img position-relative overflow-hidden">
+                    <img class="img-fluid w-100" src="@item.ProductImageUrl" alt="">
+                    <div class="product-action">
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <div class="d-flex align-items-center justify-content-center flex-wrap">
+                        <a class="h6 text-decoration-none text-truncate mb-0 mr-2" href="">@item.ProductName</a>
+                        <span class="text-muted">@item.ProductDescription</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        <h5>@item.ProductPrice ₺</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div> *@
+
+
+
+
+<!--Yeni versiyon ama görseller alt alta geliyor:-->
+
+@* <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
     @if (Model.Any())
     {
         <h5 class="section-title position-relative text-uppercase mb-3">
@@ -30,7 +143,7 @@
             </div>
         }
     </div>
-</div>
+</div> *@
 
 
 
