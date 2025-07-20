@@ -2,7 +2,7 @@
 
 namespace SwiftShop.UI.Controllers
 {
-    public class HomeController : Controller
+    public class UILayoutController : Controller
     {
         public IActionResult Index()
         {
