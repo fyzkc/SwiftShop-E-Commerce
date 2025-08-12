@@ -2,8 +2,7 @@
 
 namespace SwiftShop.UI.ViewComponents.UILayout
 {
-    [ViewComponent(Name = "HeaderViewComponent")]
-    public class HeaderViewComponent : ViewComponent
+    public class HeadViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
