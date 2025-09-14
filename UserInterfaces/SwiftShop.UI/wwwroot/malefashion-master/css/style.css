@@ -319,6 +319,12 @@ ol {
 	background: #ffffff;
 }
 
+/*Yeni eklenen*/
+.row {
+	display: flex;
+	align-items: center; /* dikeyde ortalar */
+}
+
 .header__top {
 	background: #111111;
 	padding: 10px 0;
@@ -404,7 +410,15 @@ ol {
 }
 
 .header__logo {
-	padding: 30px 0;
+	/*padding: 30px 0;*/
+	padding: 0;
+}
+
+/*Yeni eklenen*/
+.header__logo img {
+	max-height: 150px;
+	width: auto;
+	display: block;
 }
 
 .header__logo a {
@@ -412,14 +426,22 @@ ol {
 }
 
 .header__menu {
+	/*text-align: center;
+	padding: 26px 0 25px;*/
+
+	/*Yeni eklenen*/
+	padding: 0;
 	text-align: center;
-	padding: 26px 0 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px; 
 }
 
 .header__menu ul li {
 	list-style: none;
 	display: inline-block;
-	margin-right: 45px;
+	margin-right: 25px;
 	position: relative;
 }
 
@@ -504,8 +526,15 @@ ol {
 }
 
 .header__nav__option {
-	text-align: right;
-	padding: 30px 0;
+	/*text-align: right;
+	padding: 30px 0;*/
+
+	/*Yeni eklenen*/
+	padding: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center; 
+	height: 80px;
 }
 
 .header__nav__option a {
@@ -1938,7 +1967,7 @@ ol {
 
 .footer {
 	background: #111111;
-	padding-top: 70px;
+	padding-top: 50px;
 }
 
 .footer__about {
@@ -1947,6 +1976,21 @@ ol {
 
 .footer__about .footer__logo {
 	margin-bottom: 30px;
+}
+
+/*Yeni eklenen*/
+.footer__logo {
+	padding-top: 30px; 
+	display: flex;
+	align-items: center;
+	height: 80px; 
+}
+
+/*Yeni eklenen*/
+.footer__logo img {
+	max-height: 150px; 
+	width: auto;
+	display: block;
 }
 
 .footer__about .footer__logo a {

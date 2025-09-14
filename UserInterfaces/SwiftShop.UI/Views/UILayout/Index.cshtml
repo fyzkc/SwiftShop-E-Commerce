@@ -26,7 +26,7 @@
     <!-- Header Section End -->
 
     <!-- Context -->
-    @RenderBody()
+    @RenderBody() <!-- the index page that using this page as a layout, will be rendering here. -->
     <!--Context End-->
 
     <!-- Footer Section Begin -->
@@ -36,14 +36,7 @@
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
+    @await Component.InvokeAsync("Search")
     <!-- Search End -->
 
     <!-- Js Plugins -->
